@@ -37,8 +37,8 @@ var config = {
   ],
 
   resolve: {
-	  modulesDirectories: ['./node_modules', './components', './'],
-	  extensions: ['', '.js', '.ts', '.tsx']
+	  modulesDirectories: ['./node_modules', './src/components'],
+	  extensions: ['', '.js', '.ts', '.tsx', '.less']
 	},
 
   module: {
