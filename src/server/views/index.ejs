@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Starter Kit</title>
+    <% if (includeStyles) { %>
+    	<link rel="stylesheet" type="text/css" href="/styles.css">
+    <% } %>
+  </head>
+  <body>
+    <div id="root"><%- renderedRoot %></div>
+    <% if (includeClient) { %>
+    	<script src="/client.js"></script>
+    <% } %>
+  </body>
+</html>
