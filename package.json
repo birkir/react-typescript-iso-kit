@@ -4,9 +4,9 @@
   "description": "",
   "main": "build/server.js",
   "scripts": {
-    "start": "node build/server.js",
-    "build": "webpack --config webpack/release.js",
-    "dev": "node webpack/dev.js",
+    "start": "node ./build/server.js",
+    "build": "webpack --config ./webpack/release.js",
+    "dev": "node ./webpack/dev.js",
     "test": "./node_modules/.bin/jest --no-cache --verbose"
   },
   "jest": {
