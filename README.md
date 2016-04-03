@@ -2,6 +2,11 @@
 
 Webpack, React, Universal, BrowserSync, TypeScript.
 
+## Installing
+
+```bash
+npm install
+```
 
 ## Run development using client and server rendering
 
@@ -14,10 +19,10 @@ npm run dev
  - browsersync builds webpack/client
  - client hot module replacement
 
-## Build production release
+## Run production release
 
 ```bash
-npm run build
+NODE_ENV=production node build/server.js
 ```
 
  - NODE_ENV=production
