@@ -1,0 +1,11 @@
+build
+bower_components
+node_modules
+typings
+*.log
+npm-debug.log*
+.npm
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
