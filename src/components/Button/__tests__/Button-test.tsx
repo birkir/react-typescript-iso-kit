@@ -14,13 +14,13 @@ describe('Button', () => {
     <Button>foo</Button>
   );
 
-	const buttonNode = ReactDOM.findDOMNode(button);
+  const buttonNode = ReactDOM.findDOMNode(button);
 
   it('renders button', () => {
     expect(buttonNode).not.toBeNull();
   });
 
   it('should print correct text', () => {
-  	expect(buttonNode.textContent).toBe('foo');
+    expect(buttonNode.textContent).toBe('foo');
   });
 });

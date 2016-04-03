@@ -5,6 +5,7 @@
   "main": "build/server.js",
   "scripts": {
     "start": "node build/server.js",
+    "build": "webpack --config webpack/release.js",
     "dev": "node webpack/dev.js",
     "test": "./node_modules/.bin/jest --no-cache --verbose"
   },
@@ -25,7 +26,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "awesome-typescript-loader": "^0.17.0-rc.4",
     "babel-core": "^6.7.4",
     "babel-jest": "^10.0.1",
     "babel-loader": "^6.2.4",
@@ -41,11 +41,8 @@
     "http-proxy-middleware": "^0.13.0",
     "jest-cli": "^0.10.0",
     "jest-css-modules": "^1.0.0",
-    "jestpack": "^0.2.0",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
-    "ntypescript": "^1.201604030105.1",
-    "postcss-loader": "^0.8.2",
     "react": "^0.14.8",
     "react-addons-test-utils": "^0.14.8",
     "react-dom": "^0.14.8",

@@ -14,7 +14,7 @@ describe('Input', () => {
     <Input value="test" />
   );
 
-	const inputNode = ReactDOM.findDOMNode(input);
+  const inputNode = ReactDOM.findDOMNode(input);
 
   it('renders input', () => {
     expect(inputNode).not.toBeNull();

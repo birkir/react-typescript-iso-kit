@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
 
-	context: path.join(__dirname, '../'),
+  context: path.join(__dirname, '../'),
 
   debug: true,
 
@@ -26,9 +26,9 @@ var config = {
   },
 
   plugins: [
-		new webpack.ProvidePlugin({
-	    React: 'react'
-	  }),
+    new webpack.ProvidePlugin({
+      React: 'react'
+    }),
     new webpack.DefinePlugin({
       __CLIENT__: false,
     }),
@@ -41,16 +41,16 @@ var config = {
   ],
 
   resolve: {
-	  modulesDirectories: ['./node_modules', './src/components'],
-	  extensions: ['', '.js', '.ts', '.tsx', '.less']
-	},
+    modulesDirectories: ['./node_modules', './src/components'],
+    extensions: ['', '.js', '.ts', '.tsx', '.less']
+  },
 
   module: {
-  	loaders: [{
-		  test: /\.js/,
-		  loader: 'babel-loader?presets[]=react&presets[]=es2015&presets[]=stage-0',
+    loaders: [{
+      test: /\.js/,
+      loader: 'babel-loader?presets[]=react&presets[]=es2015&presets[]=stage-0',
       exclude: /node_modules/
-		}, {
+    }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[path]scope__[name]__[local]!less-loader'),
       exclude: /node_modules/

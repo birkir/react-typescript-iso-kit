@@ -3,14 +3,14 @@ import Button from 'Button/Button';
 
 
 class About extends React.Component<any, any> {
-	render() {
-		return (
-			<div>
-				<p>I'm about super foos!</p>
-				<Button>Hi there</Button>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <p>I'm about super foos!</p>
+        <Button>Hi there</Button>
+      </div>
+    );
+  }
 }
 
 export default About;

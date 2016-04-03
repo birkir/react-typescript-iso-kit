@@ -3,10 +3,10 @@ var client = require('./client');
 var server = require('./server');
 
 function replaceLoaders(item) {
-	if (typeof item.loader === 'string') {
-		item.loader = item.loader.replace(/&presets\[\]=react-hmre/, '');
-		item.loader = item.loader.replace(/localIdentName=.*?\!/, 'localIdentName=[name]_[local]_[hash:base64:10]!')
-	}
+  if (typeof item.loader === 'string') {
+    item.loader = item.loader.replace(/&presets\[\]=react-hmre/, '');
+    item.loader = item.loader.replace(/localIdentName=.*?\!/, 'localIdentName=[name]_[local]_[hash:base64:10]!')
+  }
 }
 
 client.debug = server.debug = false;
@@ -23,9 +23,9 @@ client.entry = client.entry.filter(p => !p.match(/webpack-hot-middleware/));
 
 // Add uglify and dedupe
 client.plugins.push(new webpack.optimize.UglifyJsPlugin({
-	compress: {
-  	warnings: false
-	}
+  compress: {
+    warnings: false
+  }
 }));
 client.plugins.push(new webpack.optimize.DedupePlugin());
 

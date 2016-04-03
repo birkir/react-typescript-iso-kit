@@ -24,26 +24,26 @@ var initial = false;
 
 // Spawn server
 function start() {
-	return new Promise(resolve => {
-		running = spawn('node', spawnArgs);
-		running.stdout.on('data', data => {
-			var msg = data.toString().replace(/\n$/,'');
-			if (msg.match(/Server started/)) {
-				resolve();
-				if (!initial) {
-					console.log(msg);
-					initial = true;
-				} else {
-					console.log('[🌀 ] Reloaded server');
-				}
-			} else {
-				console.log(msg);
-			}
-		});
+  return new Promise(resolve => {
+    running = spawn('node', spawnArgs);
+    running.stdout.on('data', data => {
+      var msg = data.toString().replace(/\n$/,'');
+      if (msg.match(/Server started/)) {
+        resolve();
+        if (!initial) {
+          console.log(msg);
+          initial = true;
+        } else {
+          console.log('[🌀 ] Reloaded server');
+        }
+      } else {
+        console.log(msg);
+      }
+    });
 
-		running.stderr.on('data', data => 
-			console.error(data.toString().replace(/\n$/,'')));
-	});
+    running.stderr.on('data', data => 
+      console.error(data.toString().replace(/\n$/,'')));
+  });
 }
 
 function filter(path, req) {
@@ -51,27 +51,23 @@ function filter(path, req) {
 };
 
 bs.init({
-	port: proxyPort,
-	open: false,
-	notify: false,
-	server: {
-		baseDir: './',
-		middleware: [
+  port: proxyPort,
+  open: false,
+  notify: false,
+  server: {
+    baseDir: './',
+    middleware: [
       webpackDevMiddleware(bundler, {
         publicPath: '/',
         noInfo: true,
-        quiet: true,
       }),
-      webpackHotMiddleware(bundler, {
-      	noInfo: true,
-      	quiet: true,
-      }),
+      webpackHotMiddleware(bundler),
       proxyMiddleware(filter, {
-			  target: `http://localhost:${port}`,
-			  changeOrigin: true,
-			  ws: true,
-			  logLevel: 'warn'
-			}),
+        target: `http://localhost:${port}`,
+        changeOrigin: true,
+        ws: true,
+        logLevel: 'warn'
+      }),
     ]
   }
 });
@@ -80,8 +76,8 @@ compiler.watch({
   aggregateTimeout: 300,
   poll: true,
 }, function (err, stats) {
-	if (running) {
-		running.kill();
-	}
-	setTimeout(() => start(), 10);
+  if (running) {
+    running.kill();
+  }
+  setTimeout(() => start(), 10);
 });
