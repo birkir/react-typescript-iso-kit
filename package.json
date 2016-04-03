@@ -2,12 +2,11 @@
   "name": "test04",
   "version": "1.0.0",
   "description": "",
-  "main": "build/server.js",
   "scripts": {
     "start": "node ./build/server.js",
-    "build": "webpack --config ./webpack/release.js",
     "dev": "node ./webpack/dev.js",
-    "test": "./node_modules/.bin/jest --no-cache --verbose"
+    "test": "./node_modules/.bin/jest --no-cache --verbose",
+    "postinstall": "./node_modules/.bin/typings install && webpack --config ./webpack/release.js"
   },
   "jest": {
     "scriptPreprocessor": "./webpack/tests.js",
@@ -51,6 +50,7 @@
     "style-loader": "^0.13.1",
     "ts-loader": "^0.8.1",
     "typescript": "^1.8.9",
+    "typings": "^0.7.11",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.10.0"

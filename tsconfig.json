@@ -11,6 +11,6 @@
     "*.less"
   ],
   "files": [
-    "typings/tsd.d.ts"
+    "typings/main.d.ts"
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "test04",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "react": "registry:dt/react#0.14.0+20160319053454",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160316155526",
+    "react-router": "registry:dt/react-router#2.0.0+20160330124659",
+    "react-router/history": "registry:dt/react-router/history#2.0.0+20160316155526",
+    "require": "registry:dt/require#2.1.20+20160316155526"
+  }
+}
