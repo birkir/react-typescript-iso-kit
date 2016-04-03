@@ -7,7 +7,8 @@ import ReactDOMServer from 'react-dom/server';
 import { Router, RouterContext, match } from 'react-router';
 import routes from './routes';
 
-const port = (parseInt(process.env.PORT, 10) || 3000) - !!__DEV__;
+const release = (process.env.NODE_ENV === 'production');
+const port = (parseInt(process.env.PORT, 10) || 3000) - !release;
 const app = express();
 
 // Set view engine

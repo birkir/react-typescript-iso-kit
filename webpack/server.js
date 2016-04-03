@@ -30,9 +30,13 @@ var config = {
 	    React: 'react'
 	  }),
     new webpack.DefinePlugin({
-      __DEV__: true,
       __CLIENT__: false,
     }),
+    new webpack.BannerPlugin('require("source-map-support").install();', {
+      raw: true,
+      entryOnly: false
+    }),
+    new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('styles.css')
   ],
 
@@ -44,10 +48,7 @@ var config = {
   module: {
   	loaders: [{
 		  test: /\.js/,
-		  loader: 'babel-loader',
-		  query: {
-		    presets: ['react', 'es2015', 'stage-0'],
-		  },
+		  loader: 'babel-loader?presets[]=react&presets[]=es2015&presets[]=stage-0',
       exclude: /node_modules/
 		}, {
       test: /\.less$/,
@@ -55,7 +56,7 @@ var config = {
       exclude: /node_modules/
     }, {
       test: /\.tsx$/,
-      loader: 'babel-loader?presets[]=es2015!ts-loader',
+      loader: 'babel-loader?presets[]=es2015!ts-loader?silent=true',
     }]
   }
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-const s: any = require('./Button.less');
+const s = require('./Button.less');
 
 class Button extends React.Component<any, any> {
 	render() {

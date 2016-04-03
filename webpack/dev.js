@@ -60,8 +60,12 @@ bs.init({
       webpackDevMiddleware(bundler, {
         publicPath: '/',
         noInfo: true,
+        quiet: true,
       }),
-      webpackHotMiddleware(bundler),
+      webpackHotMiddleware(bundler, {
+      	noInfo: true,
+      	quiet: true,
+      }),
       proxyMiddleware(filter, {
 			  target: `http://localhost:${port}`,
 			  changeOrigin: true,
