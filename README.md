@@ -1,3 +1,7 @@
+[![Travis](https://img.shields.io/travis/birkir/react-typescript-iso-kit.svg?style=flat-square)](https://travis-ci.org/birkir/react-typescript-iso-kit)
+![Licence](https://img.shields.io/github/license/birkir/react-typescript-iso-kit.svg)
+
+
 # Minimal React Starter Kit
 
 Webpack, React, Universal, BrowserSync, TypeScript.
