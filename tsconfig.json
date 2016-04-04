@@ -11,6 +11,8 @@
     "*.less"
   ],
   "files": [
+    "src/routes/about.tsx",
+    "src/components/Button/Button.tsx",
     "typings/main.d.ts"
   ]
 }

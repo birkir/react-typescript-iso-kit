@@ -33,7 +33,6 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
-    "browser-sync": "^2.11.2",
     "css-loader": "^0.23.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
@@ -55,5 +54,9 @@
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.10.0"
+  },
+  "devDependencies": {
+    "source-map-support": "^0.4.0",
+    "browser-sync": "^2.11.2"
   }
 }

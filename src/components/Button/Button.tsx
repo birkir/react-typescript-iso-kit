@@ -3,7 +3,7 @@ const s = require('./Button.less');
 
 class Button extends React.Component<any, any> {
   render() {
-    const type = this.props.type || 'button';
+    const type: string = this.props.type || 'button';
     return <button className={s.host} type={type}>{this.props.children}</button>;
   }
 }
