@@ -4,14 +4,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function make(options) {
 
-	var isClient = (options.target === 'web');
+  var isClient = (options.target === 'web');
 
-	// Init entry point with babel (always)
-	var entry = ['babel-polyfill'];
+  // Init entry point with babel (always)
+  var entry = ['babel-polyfill'];
 
-	// Init plugins with provide, define and no errors
-	var plugins = [
-		new webpack.ProvidePlugin({
+  // Init plugins with provide, define and no errors
+  var plugins = [
+    new webpack.ProvidePlugin({
       React: 'react'
     }),
     new webpack.DefinePlugin({
@@ -21,76 +21,76 @@ module.exports = function make(options) {
   ];
 
   // For client
-	if (isClient) {
+  if (isClient) {
 
-		// Add hot middleware
-		entry.push('webpack-hot-middleware/client');
+    // Add hot middleware
+    entry.push('webpack-hot-middleware/client');
 
-		// Add HMRE plugin
-		plugins.push(new webpack.HotModuleReplacementPlugin());
+    // Add HMRE plugin
+    plugins.push(new webpack.HotModuleReplacementPlugin());
 
-	} else {
+  } else {
 
-		// Add source maps and extract styles
-		plugins.push(
-    	new ExtractTextPlugin('styles.css')
+    // Add source maps and extract styles
+    plugins.push(
+      new ExtractTextPlugin('styles.css')
     );
-	}
+  }
 
-	// Set entry point
-	entry.push(options.entry);
+  // Set entry point
+  entry.push(options.entry);
 
-	// Styles loader
-	var loader = {
-		css: 'css-loader?modules&importLoaders=1&localIdentName=[path]scope__[name]__[local]',
-		babel: 'babel-loader?presets[]=react&presets[]=es2015&presets[]=stage-0' + (isClient ? '&presets[]=react-hmre' : ''),
-	};
+  // Styles loader
+  var loader = {
+    css: 'css-loader?modules&importLoaders=1&localIdentName=[path]scope__[name]__[local]',
+    babel: 'babel-loader?presets[]=react&presets[]=es2015&presets[]=stage-0' + (isClient ? '&presets[]=react-hmre' : ''),
+  };
 
-	var config = {
-	  context: path.join(__dirname, '../'),
-	  debug: options.debug || true,
-	  devtool: options.devtool || (isClient ? 'cheap-module-eval-source-map' : 'eval-source-map'),
-	  target: options.target || 'web',
-	  entry: entry,
-	  plugins: plugins,
+  var config = {
+    context: path.join(__dirname, '../'),
+    debug: options.debug || true,
+    devtool: options.devtool || (isClient ? 'cheap-module-eval-source-map' : 'eval-source-map'),
+    target: options.target || 'web',
+    entry: entry,
+    plugins: plugins,
 
-	  output: {
-	    path: path.join(__dirname, '..', 'build'),
-	    filename: path.basename(options.entry),
-	    publicPath: '/',
-	    libraryTarget: (isClient ? 'var' : 'commonjs2'),
-	  },
+    output: {
+      path: path.join(__dirname, '..', 'build'),
+      filename: path.basename(options.entry),
+      publicPath: '/',
+      libraryTarget: (isClient ? 'var' : 'commonjs2'),
+    },
 
-	  resolve: {
-	    modulesDirectories: ['./node_modules', './src/components'],
-	    extensions: ['', '.js', '.ts', '.tsx', '.css', '.less']
-	  },
+    resolve: {
+      modulesDirectories: ['./node_modules', './src/components'],
+      extensions: ['', '.js', '.ts', '.tsx', '.css', '.less']
+    },
 
-	  module: {
-	    loaders: [{
-	      test: /\.js/,
-	      loader: loader.babel,
-	      exclude: /node_modules/,
-	    }, {
-	      test: /\.css$/,
-	      loader: (isClient ? `style-loader!${loader.css}` : ExtractTextPlugin.extract('style-loader', loader.css)),
-	      exclude: /node_modules/,
-	    }, {
-	      test: /\.less$/,
-	      loader: (isClient ? `style-loader!${loader.css}!less-loader` : ExtractTextPlugin.extract('style-loader', `${loader.css}!less-loader`)),
-	      exclude: /node_modules/,
-	    }, {
-	      test: /\.tsx?$/,
-	      loader: `${loader.babel}!ts-loader?silent=true`,
-	      exclude: /node_modules/,
-	    }]
-	  }
-	};
+    module: {
+      loaders: [{
+        test: /\.js/,
+        loader: loader.babel,
+        exclude: /node_modules/,
+      }, {
+        test: /\.css$/,
+        loader: (isClient ? `style-loader!${loader.css}` : ExtractTextPlugin.extract('style-loader', loader.css)),
+        exclude: /node_modules/,
+      }, {
+        test: /\.less$/,
+        loader: (isClient ? `style-loader!${loader.css}!less-loader` : ExtractTextPlugin.extract('style-loader', `${loader.css}!less-loader`)),
+        exclude: /node_modules/,
+      }, {
+        test: /\.tsx?$/,
+        loader: `${loader.babel}!ts-loader?silent=true`,
+        exclude: /node_modules/,
+      }]
+    }
+  };
 
-	if (!isClient) {
-		// Don't import node binary packages
-		config.externals = /^[a-z\-0-9]+$/;
-	}
+  if (!isClient) {
+    // Don't import node binary packages
+    config.externals = /^[a-z\-0-9]+$/;
+  }
 
-	return config;
+  return config;
 };
