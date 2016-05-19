@@ -52,6 +52,7 @@
     "typescript": "^1.8.9",
     "typings": "^0.7.11",
     "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.10.0"
   },
